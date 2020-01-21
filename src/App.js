@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import {Route, Switch} from "react-router";
 
-function App() {
+import AdminPage from "./containers/AdminPage/AdminPage";
+import OrdersPage from "./containers/OrdersPage/OrdersPage";
+import AddMenuItem from "./containers/AddMenuItem/AddMenuItem";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <Fragment>
+          <Switch>
+            <Route path='/orders/' exact component={OrdersPage}/>
+            <Route path='/add/' exact component={AddMenuItem}/>
+            <Route path='/' exact component={AdminPage}/>
+          </Switch>
+        </Fragment>
+      </div>
   );
-}
+};
 
 export default App;
