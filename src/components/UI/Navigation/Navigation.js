@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {useStyles} from "./styles";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Navigation = () => {
   const classes = useStyles();
@@ -17,7 +17,7 @@ const Navigation = () => {
           <Button color="inherit" component={NavLink} to="/">
             MENU
           </Button>
-          <Button color="inherit" component={NavLink} to="/orders">
+          <Button component={NavLink} color="inherit" to='/orders/'>
             ORDERS
           </Button>
         </Toolbar>

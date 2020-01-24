@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Route, Switch} from "react-router";
 
 import AdminPage from "./containers/AdminPage/AdminPage";
@@ -7,15 +7,11 @@ import AddMenuItem from "./containers/AddMenuItem/AddMenuItem";
 
 const App = () => {
   return (
-      <div>
-        <Fragment>
           <Switch>
+            <Route path='/' exact component={AdminPage}/>
             <Route path='/orders/' exact component={OrdersPage}/>
             <Route path='/add/' exact component={AddMenuItem}/>
-            <Route path='/' exact component={AdminPage}/>
           </Switch>
-        </Fragment>
-      </div>
   );
 };
 

@@ -7,6 +7,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
 
 import {addItem} from "../../store/actions/addItemActions";
+import {deleteItem} from "../../store/actions/menuActions";
 
 class AddMenuItem extends Component {
   state={
@@ -24,8 +25,7 @@ class AddMenuItem extends Component {
       image: this.state.image
     };
 
-    this.props.addItem(newItem);
-    this.props.history.push('/');
+    await this.props.addItem(newItem);
   };
 
   handleChange = (e)=> this.setState({[e.target.name]: e.target.value});
@@ -36,18 +36,21 @@ class AddMenuItem extends Component {
                  label="Enter item name"
                  value={this.state.name}
                  onChange={this.handleChange}/>
+                 <br/>
       <TextField
           required name="price"
           label="Enter item price"
           type="number"
           value={this.state.price}
           onChange={this.handleChange}/>
+          <br/>
       <TextField
           required name="image"
           label="Enter URL to image"
           value={this.state.image}
           onChange={this.handleChange}/>
-      <Button type='submit'>ADD</Button>
+          <br/>
+      <Button type='submit' variant="contained" color="primary">ADD</Button>
     </form>);
 
     return (
@@ -68,7 +71,9 @@ const mapStateToProps = state => ({
   loading: state.addItem.loading
 });
 const mapDispatchToProps = dispatch => ({
-  addItem : (item) => dispatch(addItem(item))
+  addItem : (item) => dispatch(addItem(item)),
+  deleteItem: (item) => dispatch(deleteItem(item)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMenuItem);
